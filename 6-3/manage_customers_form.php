@@ -15,15 +15,14 @@ $statement1->closeCursor();
 if (isset($_POST['last_name'])) {
     $lastName = $_POST['last_name'];
 
-    // Modify the SQL query to search for customers by last name
+    
     $queryCustomers = 'SELECT * FROM customers WHERE lastName LIKE :lastName';
     $statement1 = $db->prepare($queryCustomers);
     
-    // Add wildcards to search for any last names containing the search term
     $statement1->bindValue(':lastName', '%' . $lastName . '%');
     $statement1->execute();
     
-    // Fetch the customers that match the search criteria
+    // Get the customers that match the search criteria
     $customers = $statement1->fetchAll();  
     $statement1->closeCursor();
 }

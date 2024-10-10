@@ -12,13 +12,12 @@ require('database.php');
 $customerID = filter_input(INPUT_POST, 'customerID', FILTER_VALIDATE_INT);
 
 if ($customerID !== null && $customerID !== false) {
-    // Prepare and execute query to get the customer details
+    
     $queryCustomer = 'SELECT * FROM customers WHERE customerID = :customerID';
     $statement = $db->prepare($queryCustomer);
     $statement->bindValue(':customerID', $customerID);
     $statement->execute();
     
-    // Fetch customer details
     $customer = $statement->fetch();  
     $statement->closeCursor();
     
