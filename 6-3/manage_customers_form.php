@@ -65,10 +65,12 @@ if (isset($_POST['last_name'])) {
 
                 <td>
                     <!-- Edit button -->
-                    <form action="select_customers_form.php" method="post">
-                        
-                        <input type="submit" value="Select">
-                    </form>
+                 
+<form action="select_customers_form.php" method="post">
+    <input type="hidden" name="customerID" value="<?php echo $customer['customerID']; ?>" />
+    <input type="submit" value="Select">
+</form>
+
 
                 </td>
             </tr>
